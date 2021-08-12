@@ -57,7 +57,9 @@ def stringinate():
     log.info(f'Received String: {input}')
 
     #Input validation
-    if input == '': return {'response':'Please send non empty data'}
+    if input == '': 
+        log.warning("Received input is an empty data")
+        return {'response':'Please send non empty data'}
 
 
     #String runbook
@@ -94,6 +96,7 @@ def string_stats():
         Method that will return 
             1. Most populat word
             2. Longest input received
+            3. Longest palindrome
         returns:
             dict
     '''
@@ -102,12 +105,14 @@ def string_stats():
     if not seen_strings:
         seen_strings = data_store.data_retriever()
 
-    log.info("Process to find the Popular and longest word started")
+    log.info("Process to find the Popular, longest word, longest palindrome started")
     most_popular = helper.get_most_popular(seen_strings)
     longest_input = helper.get_longest_input(seen_strings)
-    log.info("Process to find the Popular and longest word completed")
+    longest_palindrome = helper.get_longest_palindrome(seen_strings)
+    log.info("Process to find the Popular, longest word, longest palindrome completed")
     
     return {
         "most popular": most_popular,
-        "longest input received" : longest_input
+        "longest input received" : longest_input,
+        "longest palindrome": longest_palindrome
     }

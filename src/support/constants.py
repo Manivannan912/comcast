@@ -1,4 +1,5 @@
 '''
+Author: Mani
 Module to store constants
 '''
 

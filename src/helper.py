@@ -1,4 +1,5 @@
 """
+Author: Mani
 Module containing methods to 
     1.get occurance 
     2.max occurance of characters
@@ -76,6 +77,21 @@ def get_longest_input(data: dict):
         longest_input = [ i for i in new_data if new_data[i] == longest_input_length ]
     return longest_input
 
+def get_longest_palindrome(data: dict):
+    '''
+        Gets the longest palindrome
+
+        Args: 
+            data: dict
+        Returns:
+            longest_palindrome: list
+    '''
+    longest_palindrome = []
+    new_data = {i: len(i) for i in data if i == i[::-1] }
+    if new_data:
+        longest_palindrome_length = max(new_data.values())
+        longest_palindrome = [ i for i in new_data if new_data[i] == longest_palindrome_length ]
+    return longest_palindrome
 
     
 
